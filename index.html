@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Use of Technology in Classrooms</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
+
 <body>
   <header>
     <h1>Use of Technology in Classrooms</h1>
@@ -53,7 +54,8 @@
 
   <section id="statistics" class="fade">
     <h2>Digital Education Adoption by Country (2025)</h2>
-    <canvas id="educationChart"></canvas>
+    <p>The graph below shows the percentage of schools using digital learning tools in different countries.</p>
+    <canvas id="educationChart" width="600" height="400"></canvas>
   </section>
 
   <section id="solutions" class="fade">
@@ -77,28 +79,39 @@
   </footer>
 
   <script>
-    const ctx = document.getElementById('educationChart');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['India', 'USA', 'UK', 'Japan', 'Kenya', 'Brazil'],
-        datasets: [{
-          label: '% of Schools Using Digital Learning (2025)',
-          data: [60, 95, 88, 90, 40, 75],
-          backgroundColor: [
-            '#ff6384', '#36a2eb', '#ffce56', '#4bc0c0', '#9966ff', '#ff9f40'
+    document.addEventListener("DOMContentLoaded", () => {
+      const ctx = document.getElementById("educationChart");
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["India", "USA", "UK", "Japan", "Kenya", "Brazil"],
+          datasets: [
+            {
+              label: "% of Schools Using Digital Learning (2025)",
+              data: [60, 95, 88, 90, 40, 75],
+              backgroundColor: [
+                "#ff6384", "#36a2eb", "#ffce56",
+                "#4bc0c0", "#9966ff", "#ff9f40"
+              ],
+              borderRadius: 8,
+            },
           ],
-          borderRadius: 8
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: true, position: 'top' },
-          title: { display: true, text: 'Global Adoption of Digital Education', font: { size: 18 } }
         },
-        scales: { y: { beginAtZero: true, ticks: { stepSize: 10 } } }
-      }
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true, position: "top" },
+            title: {
+              display: true,
+              text: "Global Adoption of Digital Education",
+              font: { size: 18 },
+            },
+          },
+          scales: {
+            y: { beginAtZero: true, ticks: { stepSize: 10 } },
+          },
+        },
+      });
     });
   </script>
 </body>
