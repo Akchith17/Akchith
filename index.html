@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Use of Technology in Classrooms</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-
   <header>
     <h1>Use of Technology in Classrooms</h1>
     <p>A Case Study on Improving Learning through Digital Tools</p>
   </header>
 
-  <section id="intro">
+  <nav>
+    <a href="#intro">Intro</a>
+    <a href="#edtech">EdTech</a>
+    <a href="#india">India</a>
+    <a href="#statistics">Statistics</a>
+    <a href="#solutions">Solutions</a>
+    <a href="#conclusion">Conclusion</a>
+  </nav>
+
+  <section id="intro" class="fade">
     <h2>Introduction to SDG 4</h2>
     <p><strong>SDG 4:</strong> Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.</p>
   </section>
 
-  <section id="edtech">
+  <section id="edtech" class="fade">
     <h2>What is Educational Technology (EdTech)?</h2>
     <p>The use of digital tools, apps, and platforms to improve teaching and learning.</p>
     <ul>
@@ -31,27 +40,7 @@
     </ul>
   </section>
 
-  <section id="why">
-    <h2>Why Technology in Education?</h2>
-    <ul>
-      <li>Makes learning interactive and faster.</li>
-      <li>Accessible anywhere, anytime.</li>
-      <li>Helps visualize complex concepts.</li>
-      <li>Supports individual learning pace.</li>
-      <li>Engages students more effectively.</li>
-    </ul>
-  </section>
-
-  <section id="global">
-    <h2>Global Statistics (2025)</h2>
-    <ul>
-      <li>90% of countries adopted online/blended learning post-COVID-19.</li>
-      <li>70% of schools use digital learning tools.</li>
-      <li>1 in 3 students in developing nations use mobile phones for learning.</li>
-    </ul>
-  </section>
-
-  <section id="india">
+  <section id="india" class="fade">
     <h2>Indian Context</h2>
     <p><strong>NEP 2020</strong> promotes digital learning:</p>
     <ul>
@@ -62,53 +51,12 @@
     </ul>
   </section>
 
-  <section id="case-study">
-    <h2>Case Study: DIKSHA Platform</h2>
-    <p><strong>DIKSHA (Digital Infrastructure for Knowledge Sharing):</strong> A government app for teachers and students providing free textbooks, lessons, and training videos in 30+ languages.</p>
-    <p>Over <strong>150 million learners</strong> benefited since 2020.</p>
+  <section id="statistics" class="fade">
+    <h2>Digital Education Adoption by Country (2025)</h2>
+    <canvas id="educationChart"></canvas>
   </section>
 
-  <section id="examples">
-    <h2>Examples of Classroom Technologies</h2>
-    <ul>
-      <li>Smart boards</li>
-      <li>Tablets / Laptops</li>
-      <li>E-content (videos, simulations)</li>
-      <li>Online testing (Google Forms, Quizzes)</li>
-      <li>Virtual labs</li>
-      <li>AI-based personalized learning (ChatGPT, Khan Academy AI)</li>
-    </ul>
-  </section>
-
-  <section id="benefits">
-    <h2>Benefits of Technology</h2>
-    <ul>
-      <li>Improves engagement & retention.</li>
-      <li>Makes topics visual and easier.</li>
-      <li>Saves teachers’ time.</li>
-      <li>Encourages self-learning.</li>
-      <li>Provides equal access to remote learners.</li>
-    </ul>
-  </section>
-
-  <section id="challenges">
-    <h2>Challenges & Problems</h2>
-    <ul>
-      <li>Digital divide and lack of access.</li>
-      <li>Limited teacher training.</li>
-      <li>Overdependence on technology.</li>
-      <li>Distractions and screen time issues.</li>
-      <li>Infrastructure challenges in rural areas.</li>
-    </ul>
-  </section>
-
-  <section id="survey">
-    <h2>Survey Findings</h2>
-    <p>Out of 50 students, 40 said smart classes helped them understand better.</p>
-    <blockquote>“80% felt that technology-based smart classes made learning easier.”</blockquote>
-  </section>
-
-  <section id="solutions">
+  <section id="solutions" class="fade">
     <h2>Solutions & Future Plans</h2>
     <ul>
       <li>Provide basic digital infrastructure in every school.</li>
@@ -119,17 +67,7 @@
     </ul>
   </section>
 
-  <section id="sdg4">
-    <h2>Link with SDG 4</h2>
-    <ul>
-      <li>4.1: Quality primary/secondary education.</li>
-      <li>4.3: Equal access to higher education (online courses).</li>
-      <li>4.4: Skills for employment (digital literacy).</li>
-      <li>4.A: Inclusive and effective learning environments.</li>
-    </ul>
-  </section>
-
-  <section id="conclusion">
+  <section id="conclusion" class="fade">
     <h2>Conclusion</h2>
     <p>Technology is transforming classrooms into active learning spaces. With proper training and infrastructure, it can make education more equal, engaging, and effective — helping achieve <strong>SDG 4 by 2030</strong>.</p>
   </section>
@@ -138,5 +76,30 @@
     <p>© 2025 Educational Awareness Project | Created by [Your Name]</p>
   </footer>
 
+  <script>
+    const ctx = document.getElementById('educationChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['India', 'USA', 'UK', 'Japan', 'Kenya', 'Brazil'],
+        datasets: [{
+          label: '% of Schools Using Digital Learning (2025)',
+          data: [60, 95, 88, 90, 40, 75],
+          backgroundColor: [
+            '#ff6384', '#36a2eb', '#ffce56', '#4bc0c0', '#9966ff', '#ff9f40'
+          ],
+          borderRadius: 8
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, position: 'top' },
+          title: { display: true, text: 'Global Adoption of Digital Education', font: { size: 18 } }
+        },
+        scales: { y: { beginAtZero: true, ticks: { stepSize: 10 } } }
+      }
+    });
+  </script>
 </body>
 </html>
